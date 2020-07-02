@@ -128,17 +128,17 @@ class TOV2(object):
 
 
 t0 = timeit.time.time()
-eos_name = 'SLy4'
+eos_name = 'AP4'
 x = TOV2(eos_name)
 Rmax=2.0e6
 
-switch = 0
+switch = 1
 """ 1 for single solution; 0 for M-R relation """
 
 if switch:
 
   ec = 1.4*E_NUCL
-  res = x.TOV_solver(ec, Rmax, verbose=0)
+  res = x.TOV_solver(1001988364668515.0, Rmax, verbose=0)
   print( '%.3e %.3e' % (ec, x.EOS.max_e) )
   print(res)
  

@@ -47,7 +47,7 @@ class EOS(object):
         self.name = name
         self.mB = 1.660538921e-24  # g
 
-        dat = np.genfromtxt('EOS/' +
+        dat = np.genfromtxt('/Users/yonggao/Desktop/scalarized_ns/code/EOS/' +
                             name + '.txt')
         self.rho, self.p, self.e = dat[:, 0], dat[:, 1], dat[:, 2]
         self.min_rho = np.min(self.rho)

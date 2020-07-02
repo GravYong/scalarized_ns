@@ -241,12 +241,12 @@ class STG_solver(object):
             print('\n *** ERROR: integration fails for ec = %.6e, varphi_c = '
                     '%.6e\n' % (e_c, varphi_c))
             return dict()
-        if solver.t >= Rmax * 0.999:  # not ended with solout
+        if solver.t >= Rmax * 0.99999:  # not ended with solout
             return self.TOV_solver(e_c, varphi_c, Rmax=1.5 * Rmax,
                                    verbose=verbose)
         M_s, nu_s, varphi_s, psi_s, p_s, Mbar_s, om_s, ombar_s = solver.y
         R = solver.t
-        if p_s >= self.EOS.min_p / 0.999:
+        if p_s >= self.EOS.min_p / 0.999999:
             print('\n *** ERROR: p_s / min_p = %.2e, p_s / max_p = %.2e' % (
                   p_s / self.EOS.min_p, p_s / self.EOS.max_p))
             return dict()
@@ -258,7 +258,7 @@ class STG_solver(object):
         # Use explicit Runge-Kutta method of order 4(5)
         solver2 = sp_ode(self.ext_equation).set_integrator('dopri5')
         solver2.set_initial_value([M_s, nu_s, varphi_s, psi_s, om_s, ombar_s], R)
-        inf=2000.0
+        inf=1000
 
         Nn = 1000
         xR = np.linspace(R, inf*R, Nn)
@@ -299,7 +299,7 @@ class STG_solver(object):
             solver = sp_ode(self.TOV_equation).set_integrator('dopri5')
             solver.set_initial_value([M0, nu0, varphi0, psi0, p0, Mbar0, om0, ombar0], R_ini)
             Nnin = 1000
-            xRin = np.linspace(R_ini, R*0.9999, Nnin)
+            xRin = np.linspace(R_ini, R*0.999999, Nnin)
             yMin, yphin, yphpin, ynuin, yomin, ypin, xRinj, neggttinj, grrinj = np.zeros_like(xRin), np.zeros_like(xRin), np.zeros_like(xRin), np.zeros_like(xRin), np.zeros_like(xRin), np.zeros_like(xRin), np.zeros_like(xRin), np.zeros_like(xRin), np.zeros_like(xRin)
             yMin[0], yphin[0], yphpin[0], ynuin[0], yomin[0], ypin[0] = M0, varphi0, psi0, nu0, om0, p0
             for i in range(1,Nnin):
@@ -308,7 +308,7 @@ class STG_solver(object):
 
             solver2 = sp_ode(self.ext_equation).set_integrator('dopri5')
             solver2.set_initial_value([M_s, nu_s, varphi_s, psi_s, om_s, ombar_s], R)
-            Nnex = 1000
+            Nnex = 10000
             inf2 = 5
             xRex = np.linspace(R, inf2*R, Nnex)
             yMex, ynuex, yphex, yphpex, yomex, xRexj, neggttexj, grrexj = np.zeros_like(xRex), np.zeros_like(xRex), np.zeros_like(xRex), np.zeros_like(xRex), np.zeros_like(xRex), np.zeros_like(xRex), np.zeros_like(xRex), np.zeros_like(xRex)
@@ -383,9 +383,9 @@ class STG_solver(object):
 
 
 t0 = timeit.time.time()
-eos_name = 'PAL1'
+eos_name = 'AP4'
 
-switch = 1
+switch = 0
 """ 1 for single solution; 0 shooting for given m """
 zz = STG_solver(eos_name, th=STGq(xi=5,msq=0.01**2.0))
 

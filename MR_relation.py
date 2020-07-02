@@ -61,7 +61,7 @@ for j in range(len(names)):
         
         data1 = np.genfromtxt('data/'+ names[j]+ '_5_'+numbers[i]+'.txt')
         data11=np.genfromtxt('data/'+ names[j]+ '_5_'+numbers[i]+'.txt')
-        M1, R1 = data1[:,1]/Ms, data1[:, 3]/10**5
+        M1, R1 = data1[:,1]/Ms, data1[:, 3]/10**5 * (1+ 5*data1[:,8]**2)**(-1/2)
         index=np.where(M1==max(M1))[0][0]
         if i==0:
             
@@ -88,7 +88,7 @@ for j in range(len(names)):
         
                 
         data2 = np.genfromtxt('data/'+ names[j]+ '_7_'+numbers[i]+'.txt')
-        M1, R1 = data2[:,1]/Ms, data2[:, 3]/10**5
+        M1, R1 = data2[:,1]/Ms, data2[:, 3]/10**5* (1+ 7*data2[:,8]**2)**(-1/2)
         index=np.where(M1==max(M1))[0][0]
         axs[1,i].plot(R1[index::-1],M1[index::-1],linewidth=2, color=colors[j])
         
@@ -105,7 +105,7 @@ for j in range(len(names)):
         axs[1,i].grid(alpha=0.8)
         
         data3 = np.genfromtxt('data/'+ names[j]+ '_10_'+numbers[i]+'.txt')
-        M1, R1 = data3[:,1]/Ms, data3[:, 3]/10**5
+        M1, R1 = data3[:,1]/Ms, data3[:, 3]/10**5* (1+ 10*data3[:,8]**2)**(-1/2)
         index=np.where(M1==max(M1))[0][0]
         axs[2,i].plot(R1[index::-1],M1[index::-1],linewidth=2, color=colors[j])
         
@@ -121,7 +121,7 @@ for j in range(len(names)):
         axs[2,i].plot(R2[index::-1],M2[index::-1],linewidth=2, color=colors[j],linestyle='-.')
         
         
-fig.text(0.06, 0.5, r'$M\,[{\rm M_{\odot}}]$', ha='center', fontsize=30,rotation='vertical')
+fig.text(0.06, 0.53, r'$M\,[{\rm M_{\odot}}]$', ha='center', fontsize=30,rotation='vertical')
 fig.text(0.5, 0.06, r'$R\,[\rm km]$' ,fontsize=30)      
 fig.text(0.92, 0.77, r'$\xi=5$' ,fontsize=30, rotation='90')     
 fig.text(0.92, 0.52, r'$\xi=7$' ,fontsize=30, rotation='90')     
