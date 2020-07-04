@@ -30,8 +30,8 @@ plt.rcParams['xtick.direction'] = 'in'
 plt.rcParams['ytick.direction'] = 'in'
 plt.rcParams['xtick.major.size'] = 8
 plt.rcParams['ytick.major.size'] = 8
-plt.rcParams['xtick.minor.size'] = 4
-plt.rcParams['ytick.minor.size'] = 4
+plt.rcParams['xtick.minor.size'] = 5
+plt.rcParams['ytick.minor.size'] = 5
 plt.rcParams['xtick.top'] = True
 plt.rcParams['ytick.right'] = True
 plt.rcParams['axes.labelpad'] = 8.0
@@ -44,7 +44,7 @@ plt.tick_params(axis='both', which='minor', labelsize=18)
 from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
                                AutoMinorLocator)
 
-names= ['AP4','PAL1','WFF1','MPA1','SLy4']
+names= ['ap4','pal1','wff1','mpa1','sly4']
 numbers=['1', '01', '001']
 colors = ['c', 'g', 'r', 'm', 'orange',  'y', 'grey']
 fig, axs = plt.subplots(3, 3,figsize=(15,15),sharex=True, sharey=True)

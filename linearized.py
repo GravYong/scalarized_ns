@@ -30,8 +30,8 @@ plt.rcParams['xtick.direction'] = 'in'
 plt.rcParams['ytick.direction'] = 'in'
 plt.rcParams['xtick.major.size'] = 8
 plt.rcParams['ytick.major.size'] = 8
-plt.rcParams['xtick.minor.size'] = 4
-plt.rcParams['ytick.minor.size'] = 4
+plt.rcParams['xtick.minor.size'] = 5
+plt.rcParams['ytick.minor.size'] = 5
 plt.rcParams['xtick.top'] = True
 plt.rcParams['ytick.right'] = True
 plt.rcParams['axes.labelpad'] = 8.0
@@ -69,8 +69,8 @@ ax.plot(t1,in51,linewidth=2.5, linestyle='-.',color='#8da0cb',label=r'$\rm{a=1\,
 
 ax.set_xlim(0,0.51)
 ax.set_ylim(-12.5,2.4)
-ax.set_ylabel(r'$\Phi^{\prime}(x_{R})/\Phi(x_{R})$',fontsize=30)
-ax.set_xlabel(r'$M/R$',fontsize=30)
+ax.set_ylabel(r'$\frac{\Phi^{\prime}}{\Phi} \Big|_{x = x_{s}}$',fontsize=30)
+ax.set_xlabel(r'$c$',fontsize=30)
 ax.grid(alpha=0.6)
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
