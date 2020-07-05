@@ -52,8 +52,8 @@ plt.subplots_adjust(hspace=0.0)
 plt.subplots_adjust(wspace=0.0)
 
 font = font_manager.FontProperties(family='Times New Roman', weight='bold', style='normal', size=25)
-axs[0,0].yaxis.set_minor_locator(MultipleLocator(1/3))
-axs[0,0].xaxis.set_minor_locator(MultipleLocator(1/4))
+axs[0,0].yaxis.set_minor_locator(MultipleLocator(1/5))
+axs[0,0].xaxis.set_minor_locator(MultipleLocator(1/5))
 for j in range(len(names)):
     
     for i in range(len(numbers)):

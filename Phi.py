@@ -52,8 +52,8 @@ plt.subplots_adjust(hspace=0.0)
 plt.subplots_adjust(wspace=0.0)
 import matplotlib.font_manager as font_manager
 font = font_manager.FontProperties(family='Times New Roman', weight='bold', style='normal', size=20)
-axs[0,0].yaxis.set_minor_locator(MultipleLocator(0.05/3))
-axs[0,0].xaxis.set_minor_locator(MultipleLocator(0.25))
+axs[0,0].yaxis.set_minor_locator(MultipleLocator(0.05/5))
+axs[0,0].xaxis.set_minor_locator(MultipleLocator(0.1))
 for j in range(len(names)):
     
     for i in range(len(numbers)):

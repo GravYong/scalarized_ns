@@ -46,12 +46,12 @@ names= ['m14_a','m14_5_001_a', 'm14_10_001_a','m20_a','m20_5_001_a', 'm20_10_001
 colors = ['c', 'g', 'r', 'm', 'orange',  'y', 'grey']
 plt.figure(figsize=(12,6))
 for j in range(len(names)):
-    data1 = np.genfromtxt('data/'+'pp_ap4_' +names[j]+ '.txt')
+    data1 = np.genfromtxt('data/'+'pp_ap4_' +names[j]+ '.dat')
     t=data1[:,0]*10**3
     flux=data1[:,1]
     plt.plot(t,flux, color=colors[j], linewidth=1.5)
-plt.ylim(0.001,0.45)
-plt.xlim(0,10)
+plt.ylim(0.001,0.5)
+plt.xlim(0,2.5)
 plt.ylabel(r'$\rm{Flux}$', fontsize=30)
 plt.xlabel(r'$\rm{Time\,[10^{-3}\,s]}$', fontsize=30)
 plt.grid(alpha=0.6)
@@ -66,10 +66,10 @@ for j in range(len(names)):
     t=data1[:,0]*10**3
     flux=data1[:,1]
     plt.plot(t,flux, color=colors[j], linewidth=2)
-plt.ylim(0.001,0.43)
-plt.xlim(0,10)
+plt.ylim(0.001,0.5)
+plt.xlim(0,2.5)
 plt.ylabel(r'$\rm{Flux}$', fontsize=25)
 plt.xlabel(r'$\rm{Time\,[10^{-3}\,s]}$', fontsize=25)
 plt.grid(alpha=0.6)
 plt.minorticks_on()
-plt.show()
+# plt.show()
