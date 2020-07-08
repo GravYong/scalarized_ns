@@ -61,11 +61,11 @@ ax=plt.subplot(111)
 
 ax.plot(t,ex001, linewidth=2.5, color='#fc8d62', label=r'$\rm{a=0.01}$')
 ax.plot(t1,in101, linewidth=2.5,color='#fc8d62',linestyle='--',label=r'$\rm{a=0.01\,,\xi=1}$')
-ax.plot(t1,in501, linewidth=2.5,color='#fc8d62',linestyle='-.',label=r'$\rm{a=0.01\,,\xi=5}$')
+ax.plot(t1,in501, linewidth=2.5,color='#fc8d62',linestyle=':',label=r'$\rm{a=0.01\,,\xi=5}$')
 
 ax.plot(t,ex1,linewidth=2.5,color='#8da0cb',label=r'$\rm{a=1}$')
 ax.plot(t1,in11,linewidth=2.5, linestyle='--',color='#8da0cb',label=r'$\rm{a=1\,,\xi=1}$')
-ax.plot(t1,in51,linewidth=2.5, linestyle='-.',color='#8da0cb',label=r'$\rm{a=1\,,\xi=5}$')
+ax.plot(t1,in51,linewidth=2.5, linestyle=':',color='#8da0cb',label=r'$\rm{a=1\,,\xi=5}$')
 
 ax.set_xlim(0,0.51)
 ax.set_ylim(-12.5,2.4)
@@ -92,14 +92,15 @@ sly4=data[:,5]
 plt.figure(figsize=(12,8))
 ax=plt.subplot(111)
 
-ax.plot(a,ap4, linewidth=4, color='orange', label='{AP4}')
-ax.plot(a,pal1, linewidth=2.5,color='c',label='PAL1')
+
+ax.plot(a,pal1, linewidth=2.5,color='purple',label='PAL1')
+ax.plot(a,mpa1,linewidth=2.5,color='c',label='MPA1')
+ax.plot(a,ap4, linewidth=2.5, color='g', label='{AP4}')
+ax.plot(a,sly4,linewidth=2.5 ,color='orange',label='SLy4',alpha=1)
 ax.plot(a,wff1, linewidth=2.5,color='r',label='WFF1')
-ax.plot(a,mpa1,linewidth=2.5,color='purple',label='MPA1')
-ax.plot(a,sly4,linewidth=2.5 ,color='g',label='SLy4',alpha=1)
 
 ax.set_xlim(0.0,3.05)
-ax.set_ylim(1.55,18.5)
+ax.set_ylim(1.5,18.5)
 ax.set_ylabel(r'$ \xi_{\rm min}$',fontsize=30)
 ax.set_xlabel(r'$a$',fontsize=30)
 ax.grid(alpha=0.6)

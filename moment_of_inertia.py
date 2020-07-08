@@ -44,9 +44,9 @@ plt.tick_params(axis='both', which='minor', labelsize=18)
 from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
                                AutoMinorLocator)
 
-names= ['AP4','PAL1','WFF1','MPA1','SLy4']
+names= ['pal1','mpa1', 'ap4', 'sly4','wff1']
 numbers=['1', '01', '001']
-colors = ['c', 'g', 'r', 'm', 'orange',  'y', 'grey']
+colors = ['purple', 'c', 'g', 'orange', 'r' , 'grey']
 fig, axs = plt.subplots(3, 3,figsize=(15,15),sharex=True, sharey=True)
 plt.subplots_adjust(hspace=0.0)
 plt.subplots_adjust(wspace=0.0)
@@ -63,7 +63,7 @@ for j in range(len(names)):
         index=np.where(M1==max(M1))[0][0]
         if i==0:
             
-            axs[0,i].plot(M1[index::-1],I1[index::-1],linewidth=3.5, color=colors[j])
+            axs[0,i].plot(M1[index::-1],I1[index::-1],linewidth=2, color=colors[j])
             
         else:
             axs[0,i].plot(M1[index::-1],I1[index::-1],linewidth=2, color=colors[j])
@@ -75,7 +75,7 @@ for j in range(len(names)):
         data11=np.genfromtxt('data/'+'TOV_4eqs_'+ names[j]+ '.txt')
         M2, I2 = data11[:,1]/Ms, data11[:, 4]/10**45
         index=np.where(M2==max(M2))[0][0]
-        axs[0,i].plot(M2[index::-1],I2[index::-1],linewidth=2, color=colors[j],linestyle='-.')
+        axs[0,i].plot(M2[index::-1],I2[index::-1],linewidth=2, color=colors[j],linestyle=':')
             
         axs[0,i].grid(alpha=0.8)
 
@@ -89,7 +89,7 @@ for j in range(len(names)):
         data21=np.genfromtxt('data/'+'TOV_4eqs_'+ names[j]+ '.txt')
         M2, I2 = data21[:,1]/Ms, data21[:, 4]/10**45
         index=np.where(M2==max(M2))[0][0]
-        axs[1,i].plot(M2[index::-1],I2[index::-1],linewidth=2, color=colors[j],linestyle='-.')
+        axs[1,i].plot(M2[index::-1],I2[index::-1],linewidth=2, color=colors[j],linestyle=':')
         axs[1,i].grid(alpha=0.8)
         
         data3 = np.genfromtxt('data/'+ names[j]+ '_10_'+numbers[i]+'.txt')
@@ -100,7 +100,7 @@ for j in range(len(names)):
         data31=np.genfromtxt('data/'+'TOV_4eqs_'+ names[j]+ '.txt')
         M2, I2 = data31[:,1]/Ms, data31[:, 4]/10**45
         index=np.where(M2==max(M2))[0][0]
-        axs[2,i].plot(M2[index::-1],I2[index::-1],linewidth=2, color=colors[j],linestyle='-.')
+        axs[2,i].plot(M2[index::-1],I2[index::-1],linewidth=2, color=colors[j],linestyle=':')
         axs[2,i].grid(alpha=0.8)
         
 fig.text(0.06, 0.57, r'$I\,[\rm 10^{45}\,g\,cm^{2}]$', ha='center', fontsize=30,rotation='vertical')

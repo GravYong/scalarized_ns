@@ -44,9 +44,10 @@ plt.tick_params(axis='both', which='minor', labelsize=18)
 from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
                                AutoMinorLocator)
 
-names= ['AP4','PAL1','WFF1','MPA1','SLy4']
+names= ['pal1','mpa1', 'ap4', 'sly4','wff1']
+names1= ['PAL1','MPA1', 'AP4', 'SLy4','WFF1']
 numbers=['1', '01', '001']
-colors = ['c', 'g', 'r', 'm', 'orange',  'y', 'grey']
+colors = ['purple', 'c', 'g', 'orange', 'r' ]
 fig, axs = plt.subplots(3, 3,figsize=(15,15),sharex=True, sharey=True)
 plt.subplots_adjust(hspace=0.0)
 plt.subplots_adjust(wspace=0.0)
@@ -69,7 +70,7 @@ for j in range(len(names)):
             
         if i==0:
         
-            axs[0,i].plot(M[index::-1],phic[index::-1],linewidth=2, color=colors[j],label=names[j])
+            axs[0,i].plot(M[index::-1],phic[index::-1],linewidth=2, color=colors[j],label=names1[j])
             axs[0,i].plot(M[index::-1],phis[index::-1],linewidth=2, color=colors[j],linestyle='--')
             axs[0,i].legend(frameon=False, prop=font,ncol=2,loc='upper left')
             
