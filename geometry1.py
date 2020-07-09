@@ -45,9 +45,9 @@ import matplotlib.ticker
 from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
                                AutoMinorLocator)
 
-names= ['m14_0','m14_5_001', 'm14_5_1','m14_10_001', 'm14_10_1','m20_0','m20_5_001','m20_10_001', 'm20_10_1']
-# colors = ['c', 'g', 'r', 'm', 'orange',  'y', 'grey','purple','b']
-colors=['orange', 'grey','purple','c','r', 'g', 'b', 'm', 'orange']
+# 'y', 'grey','purple','b', 'g', 'b', 'm', 'orange'
+names= ['m14_0','m14_5_001', 'm14_5_1','m14_10_001', 'm14_10_1', 'm20_0','m20_5_001','m20_10_001', 'm20_10_1']
+colors = ['black', 'c', 'g', 'orange', 'red', 'black', 'c','orange','red']
 linestyle=['-', ':', '-.', '-', '--' ,'-' ,'--' , '-.' ,':']
 labels=[r'\rm GR',r'$\xi=5,\,\, a=0.01$', r'$\xi=5,\,\, a=1$',r'$\xi=10,\,\, a=0.01$',r'$\xi=10,\,\, a=1$',r'\rm GR',r'$\xi=5,\,\, a=0.01$',
         r'$\xi=10,\,\, a=0.01$',r'$\xi=10,\,\, a=1$']
@@ -60,13 +60,17 @@ ax2.yaxis.set_minor_locator(MultipleLocator(0.02/5))
 ax1.xaxis.set_minor_locator(MultipleLocator(0.05))
 
 for j in range(len(names)):
-    
+
     data1 = np.genfromtxt('data/'+'geo_ap4_' +names[j]+ '.txt')
     alpha=data1[:,0]
     psi=data1[:,1]
     deltat=data1[:,2]*10*km/c*1000
-    ax1.plot(alpha,psi, color=colors[j], linewidth=2,linestyle=linestyle[j],label=labels[j])
-    ax2.plot(alpha,deltat, color=colors[j], linewidth=2,linestyle=linestyle[j])
+    if j<=4:
+        ax1.plot(alpha,psi, color=colors[j], linewidth=2,linestyle='--',label=labels[j])
+        ax2.plot(alpha,deltat, color=colors[j], linewidth=2,linestyle='--')
+    else:
+        ax1.plot(alpha,psi, color=colors[j], linewidth=2,linestyle='-',label=labels[j])
+        ax2.plot(alpha,deltat, color=colors[j], linewidth=2,linestyle='-')
     ax1.grid(alpha=0.5)
     ax2.grid(alpha=0.5)
     ax1.set_ylabel(r'$\rm \psi\, [\rm rad]$', fontsize=30)
@@ -79,7 +83,7 @@ for j in range(len(names)):
     
     sub_axes = plt.axes([0.62, .53, .25, .12]) 
     if j<=4:
-        sub_axes.plot(alpha,psi,linewidth=2, color=colors[j],linestyle=linestyle[j]) 
+        sub_axes.plot(alpha,psi,linewidth=2, color=colors[j],linestyle='--') 
         sub_axes.set_ylim(1.83,2.02)
         sub_axes.set_xlim(1.39,1.51)
         sub_axes.set_yticks([1.85,1.9,1.95,2.0])
@@ -90,7 +94,7 @@ for j in range(len(names)):
         
     sub_axes = plt.axes([0.21, .25, .28, .21]) 
     if j<=4:
-        sub_axes.plot(alpha,deltat,linewidth=2, color=colors[j],linestyle=linestyle[j]) 
+        sub_axes.plot(alpha,deltat,linewidth=2, color=colors[j],linestyle='--') 
         sub_axes.set_ylim(0.0284,0.0296)
         sub_axes.set_xlim(0.999,1.017)
         sub_axes.set_xticks([1,1.005,1.01,1.015])
@@ -104,4 +108,3 @@ for j in range(len(names)):
             
 plt.savefig("geometry.pdf", format='pdf', bbox_inches="tight")
 plt.show()
-
