@@ -92,7 +92,7 @@ for i in range(len(names)):
     axs[1,1].grid()
     axs[1,2].grid()
     
-fig.text(0.5, 0.04, r'$\rm{Time\,[\rm ms]}$' ,fontsize=30)   
+fig.text(0.5, 0.04, r'$\rm{Observer\ time \,[\rm ms]}$' ,fontsize=30)   
 fig.text(0.06, 0.5, r'${F}$',fontsize=30,rotation='vertical')
 plt.savefig("pulse_profile.pdf", format='pdf', bbox_inches="tight")
 plt.show()
