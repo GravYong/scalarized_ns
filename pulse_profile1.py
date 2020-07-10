@@ -22,6 +22,7 @@ Ms=const.M_sun.cgs.value
 hbar=const.hbar.cgs.value
 m_n=const.m_n.cgs.value
 km=10**5
+q=0.5
 
 import matplotlib.font_manager as font_manager
 
@@ -56,6 +57,8 @@ axs[0,0].xaxis.set_minor_locator(MultipleLocator(0.5/4))
 axs[0,0].set_xticks([ 0.5,1,1.5,  2.0])
 axs[0,0].set_yticks([0,0.1,0.2,0.3,0.4])
 axs[0,0].set_xlim(0,2.5)
+labels=[r'\rm GR',r'$\xi=5,\,\, a=0.01$', r'$\xi=5,\,\, a=1$',r'$\xi=10,\,\, a=0.01$',r'$\xi=10,\,\, a=1$',r'\rm GR',r'$\xi=5,\,\, a=0.01$',
+        r'$\xi=10,\,\, a=0.01$',r'$\xi=10,\,\, a=1$']
 for i in range(len(names)):
     
     data1 = np.genfromtxt('data/'+'pp_ap4_' +names[i]+ '.dat')
@@ -65,15 +68,16 @@ for i in range(len(names)):
     flux3=data1[:,3]
     if i<=4:
         axs[0,0].plot( t, flux1,linewidth=2, color=colors[i],linestyle='--')
-        axs[0,1].plot( t, flux2,linewidth=2, color=colors[i],linestyle='--')
+        axs[0,1].plot( t, flux2,linewidth=2, color=colors[i],linestyle='--',label=labels[i])
         axs[0,2].plot( t, flux3,linewidth=2, color=colors[i],linestyle='--')
     else:
         axs[0,0].plot( t, flux1,linewidth=2, color=colors[i],linestyle='-')
-        axs[0,1].plot( t, flux2,linewidth=2, color=colors[i],linestyle='-')
+        axs[0,1].plot( t, flux2,linewidth=2, color=colors[i],linestyle='-',label=labels[i])
         axs[0,2].plot( t, flux3,linewidth=2, color=colors[i],linestyle='-')
-    axs[0,0].grid()
-    axs[0,1].grid()
-    axs[0,2].grid()
+    axs[0,1].legend(fontsize=12, ncol=2, frameon=False, loc=(0.04,0.5))
+    axs[0,0].grid(alpha=q)
+    axs[0,1].grid(alpha=q)
+    axs[0,2].grid(alpha=q)
     
     data2 = np.genfromtxt('data/'+'pp_ap4_' +names1[i]+ '.dat')
     t1=data2[:,0]*10**3
@@ -88,11 +92,13 @@ for i in range(len(names)):
         axs[1,0].plot( t1, flux4,linewidth=2, color=colors[i],linestyle='-')
         axs[1,1].plot( t1, flux5,linewidth=2, color=colors[i],linestyle='-')
         axs[1,2].plot( t1, flux6,linewidth=2, color=colors[i],linestyle='-')
-    axs[1,0].grid()
-    axs[1,1].grid()
-    axs[1,2].grid()
-    
-fig.text(0.5, 0.04, r'$\rm{Observer\ time \,[\rm ms]}$' ,fontsize=30)   
+    axs[1,0].grid(alpha=q)
+    axs[1,1].grid(alpha=q)
+    axs[1,2].grid(alpha=q)
+
+fig.text(0.4, 0.83, '$M=1.4M_{\odot}$' ,fontsize=15)
+fig.text(0.53, 0.83, '$M=2M_{\odot}$' ,fontsize=15)  
+fig.text(0.42, 0.03, r'$\rm{Observer\ time \,[\rm ms]}$' ,fontsize=30)   
 fig.text(0.06, 0.5, r'${F}$',fontsize=30,rotation='vertical')
 plt.savefig("pulse_profile.pdf", format='pdf', bbox_inches="tight")
 plt.show()
