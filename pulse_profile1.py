@@ -99,6 +99,6 @@ for i in range(len(names)):
 fig.text(0.4, 0.83, '$M=1.4M_{\odot}$' ,fontsize=15)
 fig.text(0.53, 0.83, '$M=2M_{\odot}$' ,fontsize=15)  
 fig.text(0.42, 0.03, r'$\rm{Observer\ time \,[\rm ms]}$' ,fontsize=30)   
-fig.text(0.06, 0.5, r'${F}$',fontsize=30,rotation='vertical')
+fig.text(0.06, 0.4, r'$\rm {Normalized\ flux}$',fontsize=30,rotation='vertical')
 plt.savefig("pulse_profile.pdf", format='pdf', bbox_inches="tight")
 plt.show()
