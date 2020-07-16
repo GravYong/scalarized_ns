@@ -23,6 +23,7 @@ m_n=const.m_n.cgs.value
 km=10**5
 
 import matplotlib.font_manager as font_manager
+from matplotlib import gridspec
 
 plt.rcParams['xtick.labelsize'] = 25
 plt.rcParams['ytick.labelsize'] = 25
@@ -58,20 +59,27 @@ x4=data1[:,3]*np.cos(data1[:,4])*10
 y4=data1[:,3]*np.sin(data1[:,4])*10
 
 r1 = 11.4
+r2=13
 theta = np.linspace(0,2*pi,36)
 x5 = r1*np.cos(theta)
-y5 = r1*np.sin(theta)
+y5 = r2*np.sin(theta)
+
+r3 = 11.4
+r4=10.5
+theta = np.linspace(0,2*pi,36)
+x6 = r3*np.cos(theta)
+y6 = r4*np.sin(theta)
 
 
-fig, (ax1,ax2)=plt.subplots(2,1, figsize=(12,24))
-plt.subplots_adjust(hspace=0.15)
+fig, (ax1,ax2)=plt.subplots(2,1, figsize=(12,24), gridspec_kw={'height_ratios': [1, 1]})
+plt.subplots_adjust(hspace=0.2)
 
-ax1.plot(x1,y1, label=r'\rm GR',linewidth=2)
-ax1.plot(x2,y2,label=r'$a = 0.01, \, \xi =5$',linewidth=2)
-ax1.fill(x5,y5,'b',alpha=0.6)
-ax2.plot(x3,y3, label=r'\rm GR',linewidth=2)
-ax2.plot(x4,y4,label=r'$a = 0.01, \, \xi =5$',linewidth=2)
-ax2.fill(x5,y5,'b',alpha=0.6)
+ax1.plot(x1,y1, label=r'\rm GR',linewidth=3, linestyle=':',color='steelblue')
+ax1.plot(x2,y2,label=r'\rm Scalar-tensor',linewidth=2, color='steelblue')
+ax1.fill(x5,y5,'b',alpha=0.5)
+ax2.plot(x3,y3, label=r'\rm GR',linewidth=3,linestyle=':',color='steelblue')
+ax2.plot(x4,y4,label=r'\rm Scalar-tensor',linewidth=2,color='steelblue')
+ax2.fill(x6,y6,'b',alpha=0.5)
 
 ax1.tick_params(labelsize=30)
 ax2.tick_params(labelsize=30)
