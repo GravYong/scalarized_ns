@@ -69,7 +69,7 @@ ax.plot(t1,in51,linewidth=2.5, linestyle=':',color='#8da0cb',label=r'$\rm{a=1\,,
 
 ax.set_xlim(0,0.51)
 ax.set_ylim(-12.5,2.4)
-ax.set_ylabel(r'$\frac{\Phi_x}{\Phi} \Big|_{x = x_{s}}$',fontsize=30)
+ax.set_ylabel(r'$\Phi_x/\Phi \Big|_{x = x_{s}}$',fontsize=30)
 ax.set_xlabel(r'${\cal C}$',fontsize=30)
 ax.grid(alpha=0.6)
 ax.get_xaxis().tick_bottom()
